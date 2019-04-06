@@ -21,8 +21,8 @@ public class Dictionary {
 					//loadDictionary();
 					//break;
 				case"p":
-					//printDictionary();
-					//break;
+					printDictionary();
+					break;
 				case"r":
 					//removeDictionary();
 					//break;
@@ -96,4 +96,9 @@ public class Dictionary {
 		}
 		
 	}
+	
+	public static void printDictionary() {
+		dictionary.printTree();
+	}
+	
 }
