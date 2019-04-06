@@ -21,7 +21,7 @@ public class Test {
 		
 		
 		
-		Entry EF = new Entry("A");
+		Entry EF = new Entry("G");
 		Node TF = new Node(EF);
 		
 		//Node T1 = new Node(E1);
@@ -30,6 +30,8 @@ public class Test {
 		/*
 		 * for(int i=1; i<=14 ; i++) { String x="E" +i; Dictionary.insert(x); }
 		 */
+		
+		System.out.println("1");
 		
 		Dictionary.insert(E1);
 		Dictionary.insert(E2);
@@ -46,7 +48,13 @@ public class Test {
 		Dictionary.insert(E13);
 		Dictionary.insert(E14);
 		
+		System.out.println("2");
 		
+		System.out.println(Dictionary.saveTree());
+		
+		System.out.println("3");
+		
+		System.out.println(Dictionary.find(TF, Dictionary.getRoot()));
 		
 		Dictionary.printTree(Dictionary.getRoot());
 		System.out.println();

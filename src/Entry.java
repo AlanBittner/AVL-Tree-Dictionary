@@ -30,7 +30,7 @@ public class Entry implements Comparable<Entry> {
 	}
 	
 	public String toString() {
-		return word + " " + definition;
+		return word + " " + definition + "\n";
 	}
 	
 	

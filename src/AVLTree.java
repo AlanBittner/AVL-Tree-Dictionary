@@ -101,7 +101,7 @@ public class AVLTree<AnyType extends Comparable> {
 		if(check.LeftNode!=null) {
 			printTree(check.LeftNode);
 		}
-		System.out.println(check);
+		System.out.print(check);
 		if(check.RightNode!=null) {
 			printTree(check.RightNode);
 		}
@@ -197,6 +197,24 @@ public class AVLTree<AnyType extends Comparable> {
 		else {
 			return findMinNode(find.LeftNode);
 		}
+	}
+	
+	public String saveTree() {
+		return saveTree(root);
+	}
+	
+	private String saveTree(Node check) {
+		
+		String savedlist = check.item.toString();
+		if(check.LeftNode!=null) {
+			
+			savedlist+=saveTree(check.LeftNode);
+		}
+		if(check.RightNode!=null) {
+			
+			savedlist+=saveTree(check.RightNode);
+		}
+		return savedlist;
 	}
 			
 
