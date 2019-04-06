@@ -14,15 +14,22 @@ public class AVLTree<AnyType extends Comparable> {
 		this.root=x;
 	}
 	
-	public Node find(Node term, Node check) {
+	public Node find(AnyType term) {
+		return find(term, root);
+	}
+	
+	public Node find(AnyType term, Node check) {
+		if(check==null) {
+			return check;
+		}
 		Node returned=null;
-		if(term.compareTo(check)==0) returned=check;
-		else if(term.compareTo(check)<0) {
+		if(term.compareTo(check.item)==0) returned=check;
+		else if(term.compareTo(check.item)<0) {
 			if(check.getLeft()!=null) {
 				returned=find(term, check.getLeft());
 			}
 		}
-		else if(term.compareTo(check)>0) {
+		else if(term.compareTo(check.item)>0) {
 			if(check.getRight()!=null) {
 				returned=find(term, check.getRight());
 			}
@@ -96,8 +103,11 @@ public class AVLTree<AnyType extends Comparable> {
 		return rotateWithRightNode(n1);
 	}
 	  
-		
-	public void printTree(Node check) {
+	public void printTree() {
+		printTree(root);
+	}
+	
+	private void printTree(Node check) {
 		if(check.LeftNode!=null) {
 			printTree(check.LeftNode);
 		}
@@ -119,7 +129,7 @@ public class AVLTree<AnyType extends Comparable> {
 		root = remove(x, root);
 	}
 	
-	public Node remove(AnyType element, Node check ) {
+	private Node remove(AnyType element, Node check ) {
 		//if check is null, it means the element isn't in tree
 		if(check == null) {
 			return check;
@@ -189,6 +199,8 @@ public class AVLTree<AnyType extends Comparable> {
 		
 		return check;
 	}
+	
+	
 	
 	public Node findMinNode(Node<AnyType> find) {
 		if(find.LeftNode==null) {

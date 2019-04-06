@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Dictionary {
-	AVLTree dictionary = new AVLTree();
+	private static AVLTree dictionary = new AVLTree();
 
 	public static void main(String[] args) {
 		
@@ -12,11 +12,11 @@ public class Dictionary {
 			input=menuInput();
 			switch(input) {
 				case"f":
-					//findEntry();
-					//break;
+					findEntry();
+					break;
 				case"i":
-					//insertEntry();
-					//break;
+					insertEntry();
+					break;
 				case"l":
 					//loadDictionary();
 					//break;
@@ -64,4 +64,36 @@ public class Dictionary {
 		return input;
 	}
 	
+	public static void findEntry() {
+		Scanner kb = new Scanner(System.in);
+		System.out.print("\nEnter the word you would like to find: ");
+		
+		Entry find = new Entry(kb.nextLine());
+		Node found= dictionary.find(find);
+		if(found==null) {
+			System.out.println("Sorry that entry does not exist.");
+		}else {
+			System.out.println(found);
+		}
+		
+	}
+	
+	
+	public static void insertEntry() {
+		Scanner kb = new Scanner(System.in);
+		System.out.print("\nEnter the word you would like to add to the dictionary: ");
+		String word=kb.nextLine();
+		//System.out.println();
+		Entry newEntry = new Entry(word);
+		if(dictionary.find(newEntry)==null) {
+			System.out.print("\nPlease enter the definition of the word: ");
+			String definition = kb.nextLine();
+			newEntry.setDefinition(definition);
+			dictionary.insert(newEntry);
+		}
+		else {
+			System.out.println("\nThe word you entered already exists in the dictionary.");
+		}
+		
+	}
 }

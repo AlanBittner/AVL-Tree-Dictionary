@@ -48,22 +48,24 @@ public class Test {
 		Dictionary.insert(E13);
 		Dictionary.insert(E14);
 		
+		Dictionary.insert(E1);
+		
 		System.out.println("2");
 		
 		System.out.println(Dictionary.saveTree());
 		
 		System.out.println("3");
 		
-		System.out.println(Dictionary.find(TF, Dictionary.getRoot()));
+		System.out.println(Dictionary.find(EF, Dictionary.getRoot()));
 		
-		Dictionary.printTree(Dictionary.getRoot());
+		Dictionary.printTree();
 		System.out.println();
 		System.out.println(Dictionary.findMinNode(Dictionary.getRoot()));
 		System.out.println();
 		Dictionary.remove(E5);
 		
 		//System.out.println(Dictionary.getRoot());
-		Dictionary.printTree(Dictionary.getRoot());
+		Dictionary.printTree();
 		
 	//	System.out.println(Dictionary.find(TF, Dictionary.getRoot()));
 		
