@@ -27,11 +27,24 @@ public class Test {
 		//Node T1 = new Node(E1);
 		//Node T2 = new Node(E2);
 	//	Node T3 = new Node(E3);
-		for(int i=1; i<=14 ; i++) {
-			String x="E" +i;
-			Dictionary.insert(x);
-		}
+		/*
+		 * for(int i=1; i<=14 ; i++) { String x="E" +i; Dictionary.insert(x); }
+		 */
 		
+		Dictionary.insert(E1);
+		Dictionary.insert(E2);
+		Dictionary.insert(E3);
+		Dictionary.insert(E4);
+		Dictionary.insert(E5);
+		Dictionary.insert(E6);
+		Dictionary.insert(E7);
+		Dictionary.insert(E8);
+		Dictionary.insert(E9);
+		Dictionary.insert(E10);
+		Dictionary.insert(E11);
+		Dictionary.insert(E12);
+		Dictionary.insert(E13);
+		Dictionary.insert(E14);
 		
 		
 		
@@ -39,7 +52,7 @@ public class Test {
 		System.out.println();
 		System.out.println(Dictionary.findMinNode(Dictionary.getRoot()));
 		System.out.println();
-		//Dictionary.remove(E1);
+		Dictionary.remove(E5);
 		
 		//System.out.println(Dictionary.getRoot());
 		Dictionary.printTree(Dictionary.getRoot());

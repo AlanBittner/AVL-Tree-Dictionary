@@ -147,7 +147,7 @@ public class AVLTree<AnyType extends Comparable> {
 				
 				//if both children were null this node becomes null
 				if(temp==null) {
-					temp=check;
+					//temp=check;
 					check=null;
 				}
 				else {
@@ -158,7 +158,7 @@ public class AVLTree<AnyType extends Comparable> {
 			else {
 				Node temp = findMinNode(check.RightNode);
 				check.setItem(temp.getItem());
-				root.RightNode=remove(element, root.RightNode);
+				check.RightNode=remove((AnyType)temp.item, check.RightNode);
 			}
 		}
 		
@@ -170,34 +170,34 @@ public class AVLTree<AnyType extends Comparable> {
 			Node leftCheck = check.LeftNode;
 			if(getHeight(leftCheck.LeftNode)-getHeight(leftCheck.RightNode)<0) {
 				//double right
-				doubleWithRightNode(check);
+				check = doubleWithLeftNode(check);
 			}else {
 				//rotate right
-				rotateWithRightNode(check);
+				check = rotateWithLeftNode(check);
 			}
 		}
 		else if(getHeight(check.RightNode)-getHeight(check.LeftNode)==2) {
 			Node rightCheck = check.RightNode;
 			if(getHeight(rightCheck.LeftNode)-getHeight(rightCheck.RightNode)>0) {
 				//double left
-				doubleWithLeftNode(check);
+				check =doubleWithRightNode(check);
 			} else {
 				//rotate left
-				rotateWithLeftNode(check);
+				check =rotateWithRightNode(check);
 			}
 		}
 		
 		return check;
 	}
 	
-	public Node findMinNode(Node<AnyType> root) {
-		if(root.LeftNode==null) {
-			return root;
+	public Node findMinNode(Node<AnyType> find) {
+		if(find.LeftNode==null) {
+			return find;
 		}
 		else {
-			return findMinNode(root.LeftNode);
+			return findMinNode(find.LeftNode);
 		}
 	}
-	
+			
 
 }
