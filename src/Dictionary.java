@@ -24,7 +24,7 @@ public class Dictionary {
 					printDictionary();
 					break;
 				case"r":
-					//removeDictionary();
+					removeEntry();
 					//break;
 				case"s":
 					//saveDictionary();
@@ -99,6 +99,14 @@ public class Dictionary {
 	
 	public static void printDictionary() {
 		dictionary.printTree();
+	}
+	
+	public static void removeEntry() {
+		Scanner kb = new Scanner(System.in);
+		System.out.print("Please enter the name of the entery you want to remove: ");
+		String word = kb.nextLine();
+		Entry element= new Entry(word);
+		dictionary.remove(element);
 	}
 	
 }
