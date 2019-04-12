@@ -1,4 +1,8 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
+
 
 public class Dictionary {
 	private static AVLTree dictionary = new AVLTree();
@@ -25,10 +29,9 @@ public class Dictionary {
 					break;
 				case"r":
 					removeEntry();
-					//break;
+					break;
 				case"s":
-					//saveDictionary();
-					System.out.println(input);
+					saveDictionary();
 					break;
 				case"x":
 					cont=false;
@@ -109,4 +112,20 @@ public class Dictionary {
 		dictionary.remove(element);
 	}
 	
+	
+	public static void saveDictionary(){
+		Scanner kb = new Scanner(System.in);
+		System.out.print("Please enter what you want to save the dictionary to:");
+		String fileName = kb.nextLine();
+		try {
+		BufferedWriter saved = new BufferedWriter(new FileWriter(fileName));
+		//System.out.println(dictionary.saveTree());
+		saved.write(dictionary.saveTree());
+		saved.close();
+		System.out.println("Dictionary was saved.");
+		} catch(IOException e) {
+			System.out.println("Invalid File Name, Dictionary not saved.");
+		}
+		
+	}
 }
