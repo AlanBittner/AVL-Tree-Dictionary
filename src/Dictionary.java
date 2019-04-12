@@ -1,4 +1,6 @@
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -22,8 +24,8 @@ public class Dictionary {
 					insertEntry();
 					break;
 				case"l":
-					//loadDictionary();
-					//break;
+					loadDictionary();
+					break;
 				case"p":
 					printDictionary();
 					break;
@@ -101,7 +103,12 @@ public class Dictionary {
 	}
 	
 	public static void printDictionary() {
-		dictionary.printTree();
+		if(dictionary.getRoot()== null) {
+			System.out.println("Dictionary has no Entries.");
+		}else {
+			dictionary.printTree();
+		}
+		
 	}
 	
 	public static void removeEntry() {
@@ -109,7 +116,13 @@ public class Dictionary {
 		System.out.print("Please enter the name of the entery you want to remove: ");
 		String word = kb.nextLine();
 		Entry element= new Entry(word);
-		dictionary.remove(element);
+		if(dictionary.find(element)==null) {
+			System.out.println(word + " does not exist in the dictionary.");
+		}else {
+			dictionary.remove(element);
+			System.out.println("Succcessfully removed "+ word);
+		}
+		
 	}
 	
 	
@@ -125,6 +138,25 @@ public class Dictionary {
 		System.out.println("Dictionary was saved.");
 		} catch(IOException e) {
 			System.out.println("Invalid File Name, Dictionary not saved.");
+		}
+		
+	}
+	
+	public static void loadDictionary() {
+		Scanner kb = new Scanner(System.in);
+		System.out.print("Please enter the dictionary you want to load: ");
+		String fileName = kb.nextLine();
+		
+		try(BufferedReader saved = new BufferedReader( new FileReader(fileName))){
+			String line;
+			while((line = saved.readLine()) != null) {
+				String linesplit[] =line.split(" ", 2);
+				Entry newEntry = new Entry(linesplit[0], linesplit[1]);
+				dictionary.insert(newEntry);
+			}
+			System.out.println("Dictionary successfully loaded.");
+		}catch (IOException e) {
+			System.out.println("Invalid File name.");
 		}
 		
 	}
