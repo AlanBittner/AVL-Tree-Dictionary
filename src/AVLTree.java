@@ -10,7 +10,7 @@ public class AVLTree<AnyType extends Comparable> {
 		return root;
 	}
 	
-	public void setRoot(Node x) {
+	private void setRoot(Node x) {
 		this.root=x;
 	}
 	
@@ -18,7 +18,7 @@ public class AVLTree<AnyType extends Comparable> {
 		return find(term, root);
 	}
 	
-	public Node find(AnyType term, Node check) {
+	private Node find(AnyType term, Node check) {
 		if(check==null) {
 			return check;
 		}
@@ -41,7 +41,7 @@ public class AVLTree<AnyType extends Comparable> {
 		root=insert(element, root);
 	}
 	
-	public Node<AnyType> insert(AnyType element, Node<AnyType> check ) {
+	private Node<AnyType> insert(AnyType element, Node<AnyType> check ) {
 		if(check == null) {
 			check= new Node(element);
 		}
@@ -117,7 +117,7 @@ public class AVLTree<AnyType extends Comparable> {
 		}
 	}
 	
-	public int getHeight(Node x) {
+	private int getHeight(Node x) {
 		if(x == null) {
 			return -1;
 		}
@@ -202,7 +202,7 @@ public class AVLTree<AnyType extends Comparable> {
 	
 	
 	
-	public Node findMinNode(Node<AnyType> find) {
+	private Node findMinNode(Node<AnyType> find) {
 		if(find.LeftNode==null) {
 			return find;
 		}

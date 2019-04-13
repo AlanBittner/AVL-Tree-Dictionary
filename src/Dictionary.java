@@ -46,7 +46,8 @@ public class Dictionary {
 
 	}
 
-	public static void displayMenu() {
+	private static void displayMenu() {
+		System.out.println("");
 		System.out.println("Possible operations:");
 		System.out.println("f) Find the meaning of a word.");
 		System.out.println("i) Insert an entry.");
@@ -58,7 +59,7 @@ public class Dictionary {
 		System.out.print("Please choose an option (f, i, l, p, r, s, or x):");
 	}
 	
-	public static String menuInput() {
+	private static String menuInput() {
 		Scanner kb = new Scanner(System.in);
 		String input=null;
 		
@@ -69,14 +70,15 @@ public class Dictionary {
 		return input;
 	}
 	
-	public static void findEntry() {
+	private static void findEntry() {
+		System.out.println("");
 		Scanner kb = new Scanner(System.in);
 		System.out.print("\nEnter the word you would like to find: ");
 		
 		Entry find = new Entry(kb.nextLine());
 		Node found= dictionary.find(find);
 		if(found==null) {
-			System.out.println("Sorry that entry does not exist.");
+			System.out.println("Word not found.");
 		}else {
 			System.out.println(found);
 		}
@@ -84,7 +86,8 @@ public class Dictionary {
 	}
 	
 	
-	public static void insertEntry() {
+	private static void insertEntry() {
+		System.out.println("");
 		Scanner kb = new Scanner(System.in);
 		System.out.print("\nEnter the word you would like to add to the dictionary: ");
 		String word=kb.nextLine();
@@ -102,7 +105,8 @@ public class Dictionary {
 		
 	}
 	
-	public static void printDictionary() {
+	private static void printDictionary() {
+		System.out.println("");
 		if(dictionary.getRoot()== null) {
 			System.out.println("Dictionary has no Entries.");
 		}else {
@@ -111,13 +115,14 @@ public class Dictionary {
 		
 	}
 	
-	public static void removeEntry() {
+	private static void removeEntry() {
+		System.out.println("");
 		Scanner kb = new Scanner(System.in);
 		System.out.print("Please enter the name of the entery you want to remove: ");
 		String word = kb.nextLine();
 		Entry element= new Entry(word);
 		if(dictionary.find(element)==null) {
-			System.out.println(word + " does not exist in the dictionary.");
+			System.out.println("Word not found.");
 		}else {
 			dictionary.remove(element);
 			System.out.println("Succcessfully removed "+ word);
@@ -126,23 +131,29 @@ public class Dictionary {
 	}
 	
 	
-	public static void saveDictionary(){
-		Scanner kb = new Scanner(System.in);
-		System.out.print("Please enter what you want to save the dictionary to:");
-		String fileName = kb.nextLine();
-		try {
-		BufferedWriter saved = new BufferedWriter(new FileWriter(fileName));
-		//System.out.println(dictionary.saveTree());
-		saved.write(dictionary.saveTree());
-		saved.close();
-		System.out.println("Dictionary was saved.");
-		} catch(IOException e) {
-			System.out.println("Invalid File Name, Dictionary not saved.");
+	private static void saveDictionary(){
+		if (dictionary.getRoot() !=null) {
+			System.out.println("");
+			Scanner kb = new Scanner(System.in);
+			System.out.print("Please enter what you want to save the dictionary to:");
+			String fileName = kb.nextLine();
+			try {
+				BufferedWriter saved = new BufferedWriter(new FileWriter(fileName));
+
+				saved.write(dictionary.saveTree());
+				saved.close();
+				System.out.println("Dictionary was saved.");
+			} catch (IOException e) {
+				System.out.println("Invalid File Name, Dictionary not saved.");
+			} 
+		} else {
+			System.out.println("Dictionary did not save as it is empty.");
 		}
 		
 	}
 	
-	public static void loadDictionary() {
+	private static void loadDictionary() {
+		System.out.println("");
 		Scanner kb = new Scanner(System.in);
 		System.out.print("Please enter the dictionary you want to load: ");
 		String fileName = kb.nextLine();

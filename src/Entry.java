@@ -33,7 +33,6 @@ public class Entry implements Comparable<Entry> {
 		return word + " " + definition + "\n";
 	}
 	
-	
 	public int compareTo(Entry x) {
 		return word.compareToIgnoreCase(x.word);
 	}

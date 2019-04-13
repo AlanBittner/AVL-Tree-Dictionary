@@ -56,11 +56,11 @@ public class Test {
 		
 		System.out.println("3");
 		
-		System.out.println(Dictionary.find(EF, Dictionary.getRoot()));
+		//System.out.println(Dictionary.find(EF, Dictionary.getRoot()));
 		
 		Dictionary.printTree();
 		System.out.println();
-		System.out.println(Dictionary.findMinNode(Dictionary.getRoot()));
+	//	System.out.println(Dictionary.findMinNode(Dictionary.getRoot()));
 		System.out.println();
 		Dictionary.remove(E5);
 		

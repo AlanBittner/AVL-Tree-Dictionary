@@ -1,7 +1,6 @@
 
 public class Node<AnyType extends Comparable> implements Comparable<Node> {
 	AnyType item;
-	Node root=null;
 	Node LeftNode=null;
 	Node RightNode=null;
 	private int height=0;
@@ -21,14 +20,6 @@ public class Node<AnyType extends Comparable> implements Comparable<Node> {
 		return this.item.compareTo(x.item);
 	}
 	
-	public Node getRoot() {
-		return root;
-	}
-	
-	public void setRoot(Node x) {
-		this.root=x;
-	}
-
 	public Node getLeft() {
 		return LeftNode;
 	}
